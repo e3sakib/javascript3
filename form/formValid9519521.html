@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type=text]{
+            display: block;
+        }
+        input[type=button]{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    Name <input type="text" id="stName">
+    Id <input type="number" id="stId">
+    Course <select name="selector" id="selector">
+        <option value=""></option>
+        <option>JEE</option>
+        <option>DDD</option>
+        <option> .NET</option>
+    </select>
+    <input type="button" value = "submit" onclick = "submitBtn()">
+        <span id = "msg"></span>
+    <SCRIPT>
+        var stId = document.getElementById("stId");
+        var stName = document.getElementById("stName");
+        var selector = document.getElementById("selector");
+        
+        function submitBtn() {
+            var result = [];
+            msg.innerHTML = "";
+
+            if (stName.value == "") {
+                result.push(false);
+                msg.innerHTML += "<br> Enter your name"
+            }
+            else{result.push(true);}
+
+            if (stId.value= "") {
+                result.push(false);
+                msg.innerHTML += "<br>Enter your id"
+            }
+            else{result.push(true);}
+
+           if (validated(result.el != false)) {
+            msg.innerHTML += "<br>Form submitted successfully";
+           }
+        
+        function validated(result) {
+            for (var i = 0; i < result.length; i++) {
+               if (result[i]==false) {
+                   return false;
+                   
+               }
+                
+            }
+            return true;
+        }
+    }
+    </SCRIPT>
+</body>
+</html>

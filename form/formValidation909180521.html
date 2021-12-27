@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        input[type= text]{
+            display: block;
+        }
+        input[type= button]{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    ID<input type="text" id="stid">
+    NAME<input type="text" id="stname">
+    MOBILE<input type="text" id="stmob">
+    EMAIL<input type="text" id="stemail">
+    ADDRESS<textarea id="stadd"></textarea><br>
+    COURSE<select id="selector">
+        <option value=""></option>
+        <option value="J2E">JEE</option>
+        <option value=".NET">C#</option>
+        <option value="DDD">DDD</option>
+    </select><br>
+    GENDER <input class="gen" type="radio" name="gen" id="male">Male
+
+    <input class="gen" type="radio" name="gen" id="female">Female
+    <input type="button" value="Submit" onclick="submitBtn()">
+    <span id="msg"></span>
+
+    <script>
+        var stid = document.getElementById("stid");
+        var stname = document.getElementById("stname");
+
+        var stmob = document.getElementById("stmob");
+            var stemail = document.getElementById("stemail");
+            var selector = document.getElementById("selector");
+            var m = document.getElementById("male");
+            var f = document.getElementById("female");
+
+            var msg = document.getElementById("msg");
+            var emailReg = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}$/;
+       // var emailReg = new RegExp( /^([a-z0-9_]+)(\.)?([a-z0-9_]+)@([a-z0-9]+)\.([a-z]{3})$/);
+      // var emailReg = /^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,5}$/;
+    function submitBtn() {
+        var results = [];
+        msg.innerHTML= "";
+        if (stid.value=="") {
+            results.push(false);
+            msg.innerHTML += "<br>Input Your Id";
+        }
+        else{results.push(true)};
+
+        if (stname.value=="") {
+            results.push(false);
+            msg.innerHTML += "<br>Input Your Name";
+        }
+        else{results.push(true)};
+
+        if (stmob.value.length != 11) {
+            results.push(false);
+            msg.innerHTML += "<br>Input Your mobile number";
+        }
+        else{results.push(true)};
+
+        if (stadd.value=="") {
+            results.push(false);
+            msg.innerHTML += "<br>Input Your Address";
+        }
+        else{results.push(true)};
+
+        if (!emailReg.test(stemail.value)) {
+            results.push(false);
+            msg.innerHTML += "<br>Input Your Valid Email";
+        }
+        else{results.push(true)};
+
+        if (!male.checked && !female.checked ) {
+            results.push(false);
+            msg.innerHTML += "<br>Select Your Gender";
+        }
+        else{results.push(true)};
+        
+        if (validated(results)) {
+            msg.innerHTML += "<br>Form Submitted Successfully";  
+        }
+        function validated(results) {
+            for (var i = 0; i < results.length; i++) {
+                if (results[i]==false) {
+                    return false;
+                }
+                
+            }
+            return true;
+            
+        }
+        
+    }
+            
+            
+    </script>
+
+</body>    
+</html>

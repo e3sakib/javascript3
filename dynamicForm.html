@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="<link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">"
+</head>
+
+<body>
+    <div class="dv">
+        <table class="tb">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Batch</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbd">
+                <tr>
+                    <td>Sakib</td>
+                    <td>1264307</td>
+                    <td>JEE</td>
+                    <td>CHUADANGA</td>
+                </tr>
+                <tr>
+                    <td>Yakub</td>
+                    <td>123399</td>
+                    <td>62</td>
+                    <td>Barisal</td>
+                </tr>
+                <tr>
+                    <td>Yunus</td>
+                    <td>23456</td>
+                    <td>JEE</td>
+                    <td>D</td>
+                </tr>
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td>c</td>
+                    <td>d</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+          var html="",
+          obj1={    name: "Sakib",
+                    id : 1264307,
+                    batch: "JEE",
+                    address: "CHUADANGA"},
+          obj2={ name: "Yunus",
+                    id : 23456,
+                    batch: "JEE",
+                    address: "D"},
+          arr = [obj1,obj2];  
+          for (let i = 0; i < arr.length; i++) {
+              var obj = arr[i];
+              html += ` <tr>
+                    <td>${obj.name}</td>
+                    <td>${obj.id}</td>
+                    <td>J${obj.batch}EE</td>
+                    <td>${obj.address}</td>
+                </tr>`
+              
+          } 
+          var tbody = document.getElemenById("tbd");
+        </script>
+
+    </div>
+
+
+</body>
+
+</html>

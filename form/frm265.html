@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <form action="">
+        <!-- <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Course</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" id="stName"></td>
+                    <td><input type="number" id="stId"></td>
+                    <td><input type="tel" id="stPh"></td>
+                    <td><input type="email" name="email" id="stEmail"></td>
+                    <td><textarea name="add" id="stAdd" ></textarea></td>
+                    <td><select name="" id="course">
+                        <option value=""></option>
+                        <option value="jee">JEE</option>
+                        <option value=ddd">DDD</option>
+                        <option value=".net">C#</option>
+                        <option value="gave">GAVE</option>
+                    </select></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table> -->
+        <table  >
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" id="stName"></td>
+            </tr>
+            <tr>
+                <td>Id</td>
+                <td><input type="number" name="id" id="stId"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="tel" name="phone" id="stPh"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email" id="stEmail"></td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>
+                    <select name="course" id="course">
+                        <option value=""></option>
+                        <option value="jee">JEE</option>
+                        <option value="ddd">DDD</option>
+                        <option value="gave">GAVE</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea name="add" id="stAdd"></textarea></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="gen" id="male">Male
+                    <input type="radio" name="gen" name="female" id="female">Female
+                </td>
+            </tr>
+            <tr>
+                <!-- <td><button onclick="add()" value="Add">Add</button></td>
+                <td><button onclick="showw()">Show Data</button></td> -->
+                <td><input type="button" value="Add" onclick="addData()" ></td>
+                <td><button onclick="show()">Show Data</button></td>
+
+            </tr>
+        </table>
+    </form>
+    <span id="msg"></span>
+
+    <script>
+        var htmls="";
+        var stName = document.getElementById("stName");
+        var stId = document.getElementById("stId");
+        var stPh = document.getElementById("stPh");
+        var stEmail = document.getElementById("stEmail");
+        var course = document.getElementById("course");
+        var stAdd = document.getElementById("stAdd");
+        var male = document.getElementById("male");
+        var female = document.getElementById("female");
+        var regex = /^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,5}$/;  
+       
+         function addData() { 
+             msg.innerHTML = "";
+             if (stName.value.length <1) {alert("Name Error");
+                msg.innerHTML = "Name Error"; 
+             }
+             else if (stId.value.length<1) {
+                msg.innerHTML = "Id Error";
+             }
+             else if (stPh.value.length<1) {
+                msg.innerHTML = "Phone no. Error";
+             }
+             else if (course.value.length<1) {
+                msg.innerHTML = "select a course";
+             }
+             else if (stAdd.value.length<1) {
+                msg.innerHTML = "write your address";
+             }
+             else if (!male.checked && !female.checked ) {
+                msg.innerHTML = "Select your gender";
+             }
+             else{
+                 var gen = "";
+                 if (male.checked) { 
+                     gen = "Male";
+                     console.log(gen);
+                 }
+                 if (female.checked) { 
+                     gen = "Female";
+                     console.log(gen);
+                 }
+        //          var html = `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        // integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+                 var html = `
+                 <table class="table table_danger" border="all">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Course</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   <td>${stName.value}</td>
+                   <td>${stId.value}</td>
+                   <td>${stPh.value}</td>
+                   <td>${stEmail.value}</td>
+                   <td>${stAdd.value}</td>
+                   <td>${course.value}</td>
+                   <td>${gen}</td>
+                    
+                </tr>
+            </tbody>
+        </table>`
+        msg.innerHTML += "Data Added<br/>"+ html;
+        
+            htmls += html;     
+             }
+
+         }  
+         function  show() {
+             
+         
+         var w = window.open();
+         w.document.write(htmls);
+        }
+    </script>
+</body>
+
+</html>

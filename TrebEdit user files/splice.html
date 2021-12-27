@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<title>Page title</title>
+</head>
+<body>
+	<script>
+					var fruits = ["Banana", "Orange", "Apple", "Mango"]; fruits.splice(2, 0, "Lemon", "Kiwi");
+document.write(fruits);
+
+//Banana,Orange,Lemon,Kiwi,Apple,Mango
+	</script>
+	
+	<script>
+					var fruits = ["Banana", "Orange", "Apple", "Mango"]; fruits.splice(2, 2, "Lemon", "Kiwi");
+	document.write(fruits);
+	//Banana,Orange,Lemon,Kiwi
+	</script>
+	
+	<script>
+					var fruits = ["Banana", "Orange", "Apple", "Mango"]; fruits.splice(1, 1);
+		document.write(fruits);
+	//		Banana,Apple,Mango
+	</script>
+	
+	
+</body>
+</html>

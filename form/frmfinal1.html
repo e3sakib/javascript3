@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frmfinal1</title>
+</head>
+<body>
+    <form id="form1" action="">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="stName"></td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" id="stId"></td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td><input type="text" id="stPhone"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" id="stEmail"></td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>
+                    <select id="course">
+                        <option value=""></option>
+                        <option value="jee"JEE></option>
+                        <option value="sql">DDD</option>
+                        <option value=".net">C#</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="gen" id="male">Male
+                <input type="radio" name="gen" id="female">Female</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea name="" id="addresss" "></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="submit" value="Add" onclick="formValid()"></td>
+                <td><input type="button" value="Show Result" onclick="showResult()"></td>
+            </tr>
+        </table>
+    </form>
+        <span id="ermsg"></span>
+
+        <script>
+            var html = "";
+            var stName = document.getElementById(stName);
+            var stId = document.getElementById(stId);
+            var stPhone = document.getElementById(stPhone);
+            var stEmail = document.getElementById(stEmail);
+            var course = document.getElementById(course);
+
+            var male = document.getElementById(male);
+            var female = document.getElementById(female);
+            var addresss = document.getElementById(addresss);
+            var ermsg = document.getElementById(ermsg);
+            var emailRegx = /^[a-z09]+@[a-z0-9]+\.[a-z]{2,5}$/;
+        
+        function formValid() {
+            ermsg.innerHTML = "";
+            if (stName.value == ""){
+                ermsg.innerHTML += "Name fielld can't be empty";   
+            }
+            else if (stId.value.length != 7){
+                ermsg.innerHTML += "Id  length must be 7 character";   
+            }
+            else if (stPhone.value.length < 11){
+                ermsg.innerHTML += "Mobile Number length minimum 11 character";   
+            }
+            else  if (!emailRegx.test(stEmail.value)){
+                ermsg.innerHTML += "Not Valid Email"; 
+            } 
+            else if (course.value == ""){
+                ermsg.innerHTML += "Please Select a Course"; 
+            } 
+            else if (!male.checked && ! female.checked){
+                ermsg.innerHTML += "Please Select Your Gender"; 
+            } 
+            else if (addresss.value == ""){
+                ermsg.innerHTML += "Please Input Your Address"; 
+            }  
+            else{
+                var gen ="";
+                if (male.checked){gen = "male";}
+                if (female.checked){gen = "female";}
+            
+                var html = `
+                Student Name ${stName.value} <br/>
+                Student Id ${stId.value} <br/>
+                Student Phone ${stPhone.value} <br/>
+                Course Name ${course.value} <br/>
+                Student Gender ${gen} <br/>
+                Student Address ${address.value} <br/>`  
+                
+                htmls += html +  "<br/>  <br/>";
+                ermsg.innerHTML += "Data Added <br/>";
+                ermsg.innerHTML += html;
+
+                document.getElementById("form1").reset();
+                showResult();
+            }    
+        }
+
+        var newWindow = window.open ("","", width = "500", height = "300");
+        newWindow.document.write("<div id= 'r'><div>");
+            function showResult() {
+                newWindow.document.getElementById("r").innerHTML = html;
+            }
+    </script>
+</body>
+</html>

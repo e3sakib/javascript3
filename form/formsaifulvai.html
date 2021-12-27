@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <style>
+        input{
+            display: block;
+        }
+        .gen{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    ID: <input type="number" id="stId">
+    Name: <input type="text" id="stName">
+    Email: <input type="email" id="stEmail">
+    Mobile: <input type="number" id="stMob">
+    Address:<br>
+    <textarea id="stAdd"></textarea> <br />
+    <input type="radio" class="gen" id="male" name="gen">Male
+    <input type="radio" class="gen" id="female" name="gen">Female 
+    <br />
+    Course:
+    <select id="selector">
+        <option value=""></option>
+        <option value="jee">JEE</option>
+        <option value="wdpd">WDPD</option>
+        <option value="gave">GAVE</option>
+        <option value="C++">C++</option>
+    </select>
+    <br /><br /><br />
+    <input type="button" value="Submit" onclick="formValid()">
+
+    <span id="msg"></span>
+
+    <script>
+        var stId = document.getElementById("stId");
+        var stName = document.getElementById("stName");
+        var stEmail = document.getElementById("stEmail");
+        var stMob = document.getElementById("stMob");
+        var stAdd = document.getElementById("stAdd");
+        var selector = document.getElementById("selector");
+        var msg = document.getElementById("msg");
+        var male = document.getElementById("male");
+        var female = document.getElementById("female");
+        var mailReg = /^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,5}$/;
+
+        function formValid(){
+            msg.innerHTML = "";
+
+            if(stId.value.length!=6){
+                msg.innerHTML += "<br />Please put a valid ID";
+            }
+            if(stName.value==""){
+                msg.innerHTML += "<br />Please enter your Name";
+            }
+            if(!mailReg.test(stEmail.value)){
+                msg.innerHTML += "<br />Please put a valid Email ID";
+            }
+            if(stMob.value.length!=11){
+                msg.innerHTML += "<br />Please put a valid Mobile number";
+            }
+            if(stAdd.value==""){
+                msg.innerHTML += "<br />Please enter an Address";
+            }
+            var gen = "";
+            if(male.checked){
+                gend = "male";
+            }
+            if(female.checked){
+                gend = "female";
+            }
+            if(!male.checked && !female.checked){
+                msg.innerHTML += "<br> Please select your gender";
+            }
+            if(selector.value==""){
+                msg.innerHTML += "<br />Please select a course";
+            }
+            if(stId.value.length==6 && stName.value!="" && mailReg.test(stEmail.value) && stMob.value.length==11 && stAdd.value!="" && (male.checked || female.checked) && selector.value!=""){
+                
+                var shuru = `
+                <html lang="en">
+                <head>
+                    <title>Result</title>
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+                </head>
+                <body>
+                    <table class="table table-warning" >
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Email</th>
+                                <th>Mobile Number</th>
+                                <th>Student Address</th>
+                                <th>Gender</th>
+                                <th>Course</th>
+                            </tr>
+                        </thead>
+                        <tbody>`
+
+                             majh +=`
+
+                            <tr>
+                                <td>${stId.value}</td>
+                                <td>${stName.value}</td>
+                                <td>${stEmail.value}</td>
+                                <td>${stMob.value}</td>
+                                <td>${stAdd.value}</td>
+                                <td>${gend}</td>
+                                <td>${selector.value}</td>
+                            </tr>
+`
+                            var shesh =`
+                        </tbody>
+                    </table>
+                    
+                </body>
+                </html>
+                `  
+             
+
+                            
+ 
+                            
+                               
+                msg.innerHTML += "Form submitted successfully <br/>";
+                 
+                
+                msg.innerHTML += shuru+majh+shesh;          
+
+            }
+        }
+        var majh ="";
+
+        
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form-title{
+            font-weight: 600;
+            font-size: 20pt;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return onSubmit()">
+        <table>
+            <caption class="form-title">Student Information</caption>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input name="name" type="text" onkeypress="nameValidate(this.value)" id="name"/>
+                </td>
+                <td id="name_error_msg"></td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>
+                    <input name="id" type="number" id="idd" onkeyup="emailValidate()">
+                </td>
+                <td id="id_error_msg"></td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>
+                  <input name="phone" type="number" id="idd1" onkeyup="emailValidate()">
+              </td>
+              <td id="contact_error_msg"></td>
+          </tr>
+            <tr>
+              <tr>
+                <td>Email</td>
+                <td>
+                    <input name="email" type="email" id="email" onkeyup="emailValidate()">
+                </td>
+                <td id="email_error_msg"></td>
+            </tr>
+            <tr>
+              <td>Course</td>
+              <td>
+                <select>
+                  <option>Click Here</option>
+                  <option>JEE</option>
+                  <option>DDD</option>
+
+                  <option>C#</option>
+
+                  <option>.net</option>               
+                 </select>
+              </td>
+              <td id="name_error_msg"></td>
+            </tr>
+            <tr>
+              <td>Skill</td>
+              <td>
+                  <input name="JS" type="checkbox"  value = "Js"/>JS
+                  <input name="HTML" type="checkbox"  value = "HTML"/>HTML
+                  <input name="BOOTSTRAP" type="checkbox"  value = "BOOTSTRAP"/>BOOTSTRAP
+                  <input name="CSS" type="checkbox"  value = "CSS"/>CSS
+              </td>
+              <td id="#"></td>
+            </tr>
+
+            <tr>
+              <td>Gender</td>
+              <td>
+                  <input type="radio" name="male" value="Male">Male
+                  <input type="radio" name="female" value="Female">Female
+              </td>
+              <td>
+              </td>
+              <tr>
+                <td>Address</td>
+                <input textarea
+               
+          </tr>     
+                 <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function nameValidate(name){
+            var nameErrorMsg = document.getElementById('email_error_msg');
+            var nameRe = new RegExp(/^[a-zA-Z\s]{6,12}$/);
+            //console.log(nameRe.test(name));
+          if(!nameRe.test(name)){              
+              nameErrorMsg.innerHTML = 'Invalid name';
+              nameErrorMsg.style = "color: red; font-weight: 600;"
+          }else{
+            nameErrorMsg.innerHTML = '';
+          }
+        }
+
+        function emailValidate(){
+            var email = document.getElementById('email').value;
+            var emailErrorMsg = document.getElementById('email_error_msg');
+            var emailRe = new RegExp( /^([a-zA-Z0-9_]+)(\.)?([a-z0-9_]+)@([a-z0-9]+)\.([a-z]{3})$/);
+          if(!emailRe.test(email)){              
+            emailErrorMsg.innerHTML = 'Invalid email';
+            emailErrorMsg.style = "color: red; font-weight: 600;"
+          }else{
+            emailErrorMsg.innerHTML = '';
+          }
+        }
+
+        function onSubmit(){
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var email = document.getElementById('email').value;
+            var email = document.getElementById('email').value;
+
+            var email = document.getElementById('email').value;
+            console.log(name, email);
+            return true;
+        }
+    </script>
+</body>
+</html>  

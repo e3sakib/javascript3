@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> email<input type="text" id="em">
+    <input type="button" value="check" onclick="onSubmit()">
+    <span id="msg"></span>
+   <script>
+       
+       function onSubmit(){
+            
+            var email = document.getElementById('em').value;
+            console.log( email);
+            return
+      
+       function emailvalid() {
+        msg.innerHTML ="";
+       var email =document.getElementById("em");
+       var emailReg = /^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,5}$/;
+         
+       
+       if (!emailReg.test(email.value)) {
+         msg.innerHTML =  "<br>Enter Your valid Email"
+           
+       } else{ msg.innerHTML =  "<br> Your Email valid"}
+    }
+   </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<form action="">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="stName" id="stName"></td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td><input type="number" value="stId" id="stId"></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><input type="tel" id="stPh"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" id="stEmail"</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><textarea id="stAdd"></textarea></td>
+        </tr>
+        <tr>
+            <td>Course</td>
+            <td><select name="slc" id="course">
+                <option value=""></option>
+                <option value="jee">JEE</option>
+                <option value="gave">GAVE</option>
+                <option value="ddd">DDD</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td><input type="radio" name="male" id="male" class="gen">Male
+                <input type="radio" name="female" id="female" class="gen">Female</td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Add" id="submit" onclick="validation()"></td>
+            <td><input type="button" value="Show Data" id="sd" onclick="show()"></td>
+        </tr>
+
+    </table>
+</form>
+                    <span id="msg"></span>
+    <script>
+       var htmls = "";
+            var stName = document.getElementById("stName");
+            var stId = document.getElementById("stId");
+            var stPh = document.getElementById("stPh");
+            var stEmail = document.getElementById("stEmail");
+            var stAdd = document.getElementById("stAdd");
+            var course = document.getElementById("course");
+            var male = document.getElementById("male");
+            var female = document.getElementById("female");
+            var regex = /^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,5}$/; 
+            var sname = /^[a-z]{3,20}$/;
+            var phone =  /^[0-9]{11}$/; 
+
+        function validation() {
+            msg.innerHTML= "";
+            if (stName.value.length < 3) {
+                 alert ( "Name Error");
+             }
+            if (stId.value == "" || stId .value== NaN ) {
+                msg.innerHTML += "Id Error";
+                alert ( "ID Error");
+            }
+
+        //   else if (stId.value.length != 7) {
+        //         msg.innerHTML += "ID length must be 7 Character";
+        //     }
+        //     else if (stPh.value.length != 11) {
+        //         msg.innerHTML += "Phone Number length must be 11 Character";
+         //   }
+            else if (!regex.test(stEmail.value)) {
+                msg.innerHTML += "Enter valid email";
+            }
+            //stAdd.innerHTML.length < 5
+            else if (stAdd.value.length < 5) {
+                msg.innerHTML += "Enter Address";
+            }  
+            
+             if (!male.checked && !female.checked) {
+                msg.innerHTML += "Select your gender";
+            }
+            else {
+                var gen = "";
+                if (male.checked) {
+                    gen = "Male"
+                }
+                if (female.checked) {
+                    gen = "Female"
+                }
+                var html = `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+                
+                <table class = "table table-warning">
+                <tr>
+                    <td>Name</td>
+                    <td>${stName.value}</td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td>${stId.value}</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>${stPh.value}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>${stEmail.value}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>${stAdd.value}</td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td>${course.value}</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>${gen}</td>
+                    </tr>
+                </table>
+                ` 
+          msg.innerHTML += "Data Added <br/>" +  html ;
+        
+         htmls += html; 
+         
+            }  
+        }
+        function show() {
+             var nw = window.open();
+           nw.document.write (htmls);
+            }
+
+    </script>
+</body>
+
+</html>

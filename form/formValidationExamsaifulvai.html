@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form valitaion exam</title>
+    <style>
+        body{
+            border: 5;
+            background-color: aqua;
+            color:rgb(55, 0, 255);
+            align-content: center;
+            margin-top: 5;
+            margin-left: 5;
+
+        }
+        .script{
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="align-content: center; color: yellow; background-color: violet;">student form</h1>
+    student name:<input type="text" id="stNam"><br><br>
+    student id:<input type="number" id="stId"><br><br>
+    mobile no:<input type="number" id="stMob"><br><br>
+    address :<textarea id="stAdd" title="write your address"></textarea><br><br>
+    gender:<input type="radio" id="male" name="gen">male
+            <input type="radio" id="female" name="gen">female
+            <input type="radio" id="others" name="gen">others<br><br>
+    courses:<select id="stCor" ><br><br>
+            <option value=""></option>
+            <option value="jee">jee</option>
+            <option value="gave">gave</option>
+            <option value="nt">networking</option>
+             </select><br><br>
+    name of tsp:<input type="checkbox" id="jnu" name="tsp">jnu
+                <input type="checkbox" id="nhu" name="tsp">nclc
+                <input type="checkbox" id="ddd" name="tsp">ddd 
+                <br><br>
+             <input type="button" onclick="subBtn()" value="submit">   
+             <span id="msg"></span>
+             <script class="script">
+                 var htmls="";
+                 var stNam=document.getElementById("stNam");
+                 var stId=document.getElementById("stId");
+                 var stMob=document.getElementById("stMob");
+                 var stAdd=document.getElementById("stAdd");
+                 var male=document.getElementById("male");
+                 var female=document.getElementById("female");
+                 var others=document.getElementById("others");
+                 var stCor=document.getElementById("stCor");
+                 var jnu=document.getElementById("jnu");
+                 var nhu=document.getElementById("nhu");
+                 var ddd=document.getElementById("ddd");
+                 var msg=document.getElementById("msg");
+                function subBtn(){
+                        msg.innerHTML="";
+                        if(stNam.value==""){
+                            msg.innerHTML+="enter your name";
+                        }
+                        else if(stId.value==""){
+                            msg.innerHTML+="enter your id";
+                        }
+                        else if(stMob.value.length!=11){
+                            msg.innerHTML+="enter your mobile number";
+                        }
+                        else if(stAdd.value==""){
+                            msg.innerHTML+="enter your address";
+                        }
+                        else if(!male.checked && !female.checked&&!others.checked){
+                            msg.innerHTML+="enter your gender";
+                        }
+                        else if(stCor.value==""){
+                            msg.innerHTML+="enter your courses";
+                        }
+                        else if(!jnu.checked&&!nhu.checked&&!ddd.checked){
+                            msg.innerHTML+="enter your tsp";
+                         }
+                       else{
+                            
+                          var gen="";
+                            if(male.checked){
+                                gen="male";
+                             }
+                             if(female.checked){
+                                 gen="female";}
+                             if(others.checked){
+                                 gen="others";
+                             }
+                             var tsp="";
+                             if(jnu.checked){
+                                 tsp="jnu";
+                             }
+                             if(nhu.checked){
+                                 tsp="nhu";
+                             }
+                             if(ddd.checked){
+                                 tsp="ddd";
+                             }
+                      
+                         var html=`
+                         student name:${stNam.value}<br><br>
+                         student id: ${stId.value}<br><br>
+                         mobile no: ${stMob.value}<br><br>
+                         address: ${stAdd.value}<br><br>
+                         gender: ${gen}<br><br>
+                         courses: ${stCor.value}<br><br>
+                         name of tsp: ${tsp} 
+                        
+                        
+                        
+                         
+                 `
+                htmls+=html+"<br><br>";
+                         msg.innerHTML+="add data";
+                        msg.innerHTML+=html;
+                        var newWin=window.open();
+                         newWin.document.write(htmls);
+
+                            }
+
+            } 
+                       
+
+                
+             </script>               
+</body>
+</html>

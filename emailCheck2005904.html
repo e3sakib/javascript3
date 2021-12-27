@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Email<input type="text" oninput="validEmail(this.value)" id="email">
+    <span id="msg"></span>
+    <script>
+        var msg =document.getElementById("msg")
+        var inputbox =document.getElementById("email")
+        function validEmail(email) {
+            var regex= /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}$/;
+            if (regex.test(email)) {
+                msg.innerHTML= 'valid';
+                inputbox.style.borderColor='green';
+            }
+          else {
+                msg.innerHTML= 'invalid'; 
+                inputbox.style.borderColor='red';
+            }
+        }
+    </script> <br> -->
+
+Email<input type="text" oninput="validEmail()" id="email">
+<span id="msg"></span>
+<script>
+    var msg =document.getElementById("msg")
+    var inputbox =document.getElementById("email")
+    function validEmail(email) {
+        var regex= /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}$/;
+        if (regex.test(inputbox.value)) {
+            msg.innerHTML= 'valid';
+            inputbox.style.borderColor='green';
+        }
+      else {
+            msg.innerHTML= 'invalid'; 
+            inputbox.style.borderColor='red';
+        }
+    }
+</script>
+</body>
+</html>

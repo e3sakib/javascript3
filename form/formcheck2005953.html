@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input [type = text]{
+            display: block;
+        }
+        input [type =button]{
+            display: block;
+        }
+        input [type = number]{
+            display: block;}
+    </style>
+</head>
+<body>
+    Id<input type="number" id="sid"><br><span id="msg1"></span><br>
+    Name<input type="text" id="sname"><br><span id="msg2"></span><br>
+    Course<select id="selector">
+        <option value =""></option>
+        <option >JEE</option>
+        <option >GAVE</option>
+        <option >DDD</option>   
+     </select><br>
+     <span id="msg3"></span><br>
+     <input type="button" value="submit" onclick="submitbtn()"><br>
+     <span id="msg"></span><br>
+     <button type="reset" id="re" onclick="reset()">Reset</button>
+     <script>
+         var sid = document.getElementById('sid');
+         var sname = document.getElementById('sname');
+         var selector = document.getElementById('selector');
+         var msg1 = document.getElementById('msg1');
+         var msg2 = document.getElementById('msg2');
+         var msg3 = document.getElementById('msg3');
+         var msg = document.getElementById('msg');
+         function submitbtn(validated) {
+             var result = [];
+             msg.innerHTML='';
+             if (sid.value.length !=6) {
+                 result.push(false);
+                 msg1.innerHTML="Input Your Id";
+             } 
+             if (sname.value =="") {
+                result.push(false);
+                
+                msg2.innerHTML="<br>Input Your Name";
+             }
+             if (selector.value =="") {
+                result.push(false);
+              var s= msg3.innerHTML="select any one";
+             }
+             if (result== false) {
+           var m=  msg.innerHTML="done";
+            
+         }
+         
+         }
+         function validated(result){
+                 for (let i = 0; i < result.length; i++) {
+                     if (result[i]== false  ) {
+                         return false ;
+                     }
+                     
+                 }
+                 return true;}
+
+                 function reset(result){
+                 
+                    var sid = document.getElementById('sid').value= "";
+         var sname = document.getElementById('sname').value=" ";
+         var selector = document.getElementById('selector').value=" ";
+         var msg1 = document.getElementById('msg1').value=" ";
+         var msg2 = document.getElementById('msg2').value=" ";
+         var msg3 = document.getElementById('msg3').value=" ";
+         var msg = document.getElementById('msg').value="";
+         var m=  msg.innerHTML="done".value="";  
+         var s= msg3.innerHTML="select any one".value="";    
+                 }     
+     </script>
+</body>
+
+</html>

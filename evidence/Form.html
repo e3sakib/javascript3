@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type= "text" id = stn></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="tel" id="stc"></td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td><textarea id="str"></textarea></td>
+            </tr>
+            <tr>
+                <td>Sex</td>
+                <td><input type="radio" name="gen" id="male">Male
+                    <input type="radio" name="gen" id="female">Female</td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td id="cc"><input type="checkbox" name="NT" id="nt">NT
+                    <input type="checkbox" name="IAD" id="iad">IAD
+                    <input type="checkbox" name="ddd" id="ddd">DDD
+                    <input type="checkbox" name="esad" id="esad">ESAD
+                    
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>
+                    <select name="" id="loc">
+                        <option value="bn">Banani</option>
+                        <option value="dhan">Dhanmondi</option>
+                        <option value="mir">Mirpur</option>
+                        
+                        
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <td><input type="button" value="Submiit" onclick="show()" </td>
+               
+            </tr>
+        </table>
+    </form>
+    <span id="msg"></span>
+    <script> 
+    var htmls = "";
+        var stn = document.getElementById("stn");
+        var stc = document.getElementById("stc");
+        var str = document.getElementById("str");
+        var male = document.getElementById("male");
+        var female = document.getElementById("female");
+        var nt = document.getElementById("nt");
+        var iad = document.getElementById("iad");
+        var ddd = document.getElementById("ddd");
+        var esad = document.getElementById("esad");
+        var loc = document.getElementById("loc");
+        
+        function show() {
+            if (stn.value.length<1) {
+                msg.innerHTML= "Enter Your Name";
+            }
+           else if (stc.value.length<1) {
+                msg.innerHTML= "Enter Your Contact Number";
+            }
+            else if (str.value.length<1) {
+                msg.innerHTML= "Enter Your Remarks";
+            }
+            else if (male.checked && female.checked ) {
+                msg.innerHTML = "Select your gender";
+             }
+             else if (loc.value.length<1) {
+                msg.innerHTML = "Select Your location";
+             }
+             else if (!nt.checked && !iad.checked &&  !ddd.checked &&  !esad.checked  ) {
+                msg.innerHTML = "Select Your course";
+             }
+             else{
+                 var gen = "";
+                 if (male.checked) { 
+                     gen = "Male";
+                     console.log(gen);
+                 }
+                 if (female.checked) { 
+                     gen = "Female";
+                     console.log(gen);
+                 }   
+                 var course = "";
+                 if (nt.checked) { 
+                     course = "nt";
+                    
+                 }
+                 if (iad.checked) { 
+                     course = "iad";
+                    
+                 }  
+                 if (esad.checked) { 
+                     course = "esad";
+                     
+                 }   
+
+                 }
+                 var html = `
+                 <table class="table table_danger" border="all">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Remarks</th>
+                    <th>Sex</th>
+                    <th>Course</th>
+                    <th>Location</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   <td>${stn.value}</td>
+                   <td>${stc.value}</td>
+                   <td>${str.value}</td>
+                   <td>${gen}</td>
+                   <td>${course}</td>
+                   <td>${loc.value}</td>
+                   
+                    
+                </tr>
+            </tbody>
+        </table>`
+        msg.innerHTML += "Data Added<br/>";
+        var w = window.open();
+        w.document.write(html)
+             htmls += html;     
+             }
+
+          
+        
+
+     </script>
+</body>
+</html>

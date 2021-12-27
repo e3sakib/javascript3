@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <TITLE>Factorial</TITLE>
+    
+    </head>
+    <body> <input type="number" step="111">
+        <form action="#">
+            Enter a number <input type="number" id="en"/>
+            <button onclick="factorial()">Result</button>
+            <button type="reset">Reset</button>
+            <span></span>
+        </form>
+      <script>
+      function factorial() { 
+              var valu= document.getElementById("en").value;
+             valu = parseInt(valu);
+           var r = 1;
+          for ( i = 1; i <=valu; i++ ) {
+              r=r * i;
+              
+              
+          }
+          console.log(r);
+          document.querySelector("span").innerHTML= r;
+          }
+          
+
+       //    var a = prompt("enter number");
+    /*      var b = parseInt(a);
+          var fac = 1;
+          for (var i  = 1; i <= b; i++) {
+              fac*=i;
+              
+          }
+          console.log(fac);
+          */
+
+      </script>  
+    </body>
+</html>

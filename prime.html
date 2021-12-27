@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<title>Prime</title>
+</head>
+<body>
+	<!-- <script>
+					function isPrime(n) {
+					 for(var i = 2; n>i;i++){
+			  		if(n%i==0){ return false;}
+				  	}
+					return n>1;}
+					
+					console.log(isPrime(23));
+					console.log(isPrime(263));
+					console.log(isPrime(24));
+					console.log(isPrime(1));
+
+
+	</script> -->
+	<!-- <script>
+		var n = parseInt(prompt("enter number"));
+		function isPrime(n) {
+			for (var i = 2; i <n; i++) {
+				if (n%i==0) {
+					return false;
+				}
+				
+			}
+			return n>1;
+		} 
+		alert(isPrime(n));
+	</script> -->
+
+
+
+	<input type="number" id="nn" placeholder="Enter Number">
+	<input type="button" value="Check" onclick="checkPrime">
+	<span id="msg"></span>
+	<script>
+		function isPrime(n) {
+			if (n<2) {
+				return false;	
+			}
+			for (var i = 2; i < n; i++) {
+				if (n%i==0) {
+					return false;
+				}
+				
+			}return true;
+		}
+		 function checkPrime() {
+			 var number = document.getElementById("nn").value;
+			 if (isPrime(number)) {alert();
+				 msg.innerHtml = "prime";
+			 }else msg.innerHTML = "not prime";
+		 }
+	</script>
+</body>
+</html>
